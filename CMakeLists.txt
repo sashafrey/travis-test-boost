@@ -6,6 +6,7 @@ find_package(Boost 1.53 REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
 
 add_executable(test_bin "./test.cpp")
+target_link_libraries(test_bin ${Boost_LIBRARIES})
 
 enable_testing()
 add_test(A test_bin)
