@@ -13,9 +13,9 @@ before_install:
     - ./bootstrap.sh --prefix=/usr/local
     - sudo ./b2 --with=all -j 4 install -d0
     - sudo ldconfig  
+    - cd ..
 
 script:
-    - cd ~
     - mkdir _builds
     - cd _builds
     - cmake ..
