@@ -11,7 +11,7 @@ before_install:
     - sudo apt-get update
     - sudo apt-get install build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev 
     - ./bootstrap.sh --prefix=/usr/local
-    - sudo ./b2 --with=all -j 4 install 
+    - sudo ./b2 --with=all -j 4 install -d0
     - sudo ldconfig  
 
 script:
