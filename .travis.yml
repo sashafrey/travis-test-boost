@@ -10,8 +10,8 @@ before_install:
     - cd boost_1_55_0/
     - sudo apt-get update
     - sudo apt-get install build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev 
-    - ./bootstrap.sh --prefix=/usr/local
-    - sudo ./b2 -j4 install -d0 --with-libraries=thread,program_options,date_time,system,chrono,filesystem,timer,iostreams
+    - ./bootstrap.sh --prefix=/usr/local --with-libraries=thread,program_options,date_time,system,chrono,filesystem,timer,iostreams
+    - sudo ./b2 -j4 install -d0
     - sudo ldconfig  
     - cd ..
 
