@@ -6,7 +6,7 @@ compiler:
 
 before_install:
     - wget -O boost_1_55_0.tar.gz http://sourceforge.net/projects/boost/files/boost/1.55.0/boost_1_55_0.tar.gz/download
-    - tar xzvf boost_1_55_0.tar.gz
+    - tar xzf boost_1_55_0.tar.gz
     - cd boost_1_55_0/
     - sudo apt-get update
     - sudo apt-get install build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev 
