@@ -5,13 +5,17 @@ compiler:
     - clang
 
 before_install:
-    - sudo add-apt-repository ppa:apokluda/boost1.53 -y
+    - wget -O boost_1_55_0.tar.gz http://sourceforge.net/projects/boost/files/boost/1.55.0/boost_1_55_0.tar.gz/download
+    - tar xzvf boost_1_55_0.tar.gz
+    - cd boost_1_55_0/
     - sudo apt-get update
-
-install:
-    - sudo apt-get install libboost1.53-dev
+    - sudo apt-get install build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev 
+    - ./bootstrap.sh --prefix=/usr/local
+    - sudo ./b2 --with=all -j 4 install 
+    - sudo ldconfig  
 
 script:
+    - cd ~
     - mkdir _builds
     - cd _builds
     - cmake ..
