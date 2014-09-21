@@ -1,23 +1,21 @@
 language:
     - cpp
 
+env:
+ global:
+    - "ARTIFACTS_AWS_REGION=eu-west-1"
+    - "ARTIFACTS_S3_BUCKET=artm"
+    - secure: "fgg2171sJW3OgG41rw4y/Guf31KPl2xQ8N1TukZ2oSfwSx6GsP5PPBISCt9kwUFAHuL5Sd9Qxx+2Quu7zHMPyM+wEXagtqN4LmS9pwXbze2GTqD6E6PA7dB8LA+EDq0d/3g34GunkXtF+Y1rjmuay9AKV07L6Mi4OJ7qa8brpHE="
+    - secure: "TaDH0cDG9/oO/nOZ0jv+sE0soc3uQ+sAULyj9om9W9esvuYU3fjiN7IyJCmzjvpaGtub5cHKObKwtclxFjzsd71KnYqbZ/JWngL1rD7Cjrc3IoUmd/K9UQdH8T2/zfhx8ZJP2sjP8t0+kIzttXuYW2gXRdlsOBXHVtvkWlgKjc4="
+
 compiler:
     - clang
 
 before_install:
-    - wget -O boost_1_55_0.tar.gz http://sourceforge.net/projects/boost/files/boost/1.55.0/boost_1_55_0.tar.gz/download
-    - tar xzf boost_1_55_0.tar.gz
-    - cd boost_1_55_0/
-    - sudo apt-get update
-    - sudo apt-get install build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev 
-    - ./bootstrap.sh --prefix=/usr/local --with-libraries=thread,program_options,date_time,system,chrono,filesystem,timer,iostreams
-    - sudo ./b2 -j4 install -d0
-    - sudo ldconfig  
-    - cd ..
+    - "gem install travis-artifacts"
 
 script:
     - mkdir _builds
-    - cd _builds
-    - cmake ..
-    - make
-    - ctest
+
+after_script:
+    - "travis-artifacts upload --path test.cpp"
